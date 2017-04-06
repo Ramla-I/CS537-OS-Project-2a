@@ -1,0 +1,55 @@
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+	while(;;)
+	{
+	
+		int rc = fork();
+		// child process
+	 	if(rc == 0) {
+			printf("%s","i am child\n");
+			switch(argv[1])
+			{
+				case "cd":
+					char *theenv;
+					int ret = chdir(theenv);
+					printf("%s\n%d\n",theenv,ret);
+					break;
+				case "pwd":
+					char *buffer = NULL;
+					size_t sizeb = 0;
+					char *thepath = getcwd(buffer, sizeb);
+					sizeb = strlen(thepath);
+					int r= write(1, thepath, sizeb);
+					break;
+				case "wait":
+				case "exit":
+					exit(0);
+				default:
+				
+
+			 } 
+		}
+
+		// parent process
+		else if (rc >0) {
+			// parent
+		 	printf("%s", "i am parent\n");
+			if(!(strcmp(argv[1],"wait"))
+				wait();
+
+		} 
+		else
+		  printf("error in calling fork()");
+
+	}
+	return 0;
+} // main
+
+

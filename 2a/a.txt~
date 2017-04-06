@@ -1,0 +1,4 @@
+pwd
+cd /home/ramla/Documents/1a
+pwd 
+ls > b.txt

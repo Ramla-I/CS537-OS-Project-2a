@@ -1,0 +1,10 @@
+pwd
+cd /home/ramla/Documents/1a
+pwd 
+cd /home/ramla/Documents/2a
+ls > b.txt
+a.py
+ps
+fine
+wait
+exit
